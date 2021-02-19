@@ -9,7 +9,7 @@ int main() {
     bool clicked = true; // i don't know why this works, it makes no sense. but it does work
 
     // create entities
-    sf::RenderWindow window(sf::VideoMode(400, 400), "Hexane - Installer", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(400, 400), "ShareCC - Installer", sf::Style::Close);
     window.setFramerateLimit(144);
     sf::Event event;
     sf::Font font;
@@ -26,7 +26,7 @@ int main() {
     sf::Text buttonText2;
     sf::Text license;
 
-    text.setString("Welcome To Hexane!");
+    text.setString("Welcome To ShareCC!");
     license.setString("By installing, you agree to the MIT License at https://mit-license.org/");
 
     started.setString("Lets get started!");
@@ -154,7 +154,7 @@ int main() {
             mousetex.loadFromFile("cursors/pointing_hand.png");
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if (clicked = true) {
-                    FILE *f = popen("zenity --error --title='Hexane - Error' --text='You need to specify an install location.'", "r");
+                    FILE *f = popen("zenity --error --title='ShareCC - Error' --text='You need to specify an install location.'", "r");
                     clicked = false;
                 }
             }
