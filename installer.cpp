@@ -25,6 +25,8 @@ int main() {
     sf::Text buttonText;
     sf::RectangleShape button2;
     sf::Text buttonText2;
+    sf::RectangleShape button3;
+    sf::Text buttonText3;
     sf::Text license;
 
     text.setString("Welcome To ShareCC!");
@@ -80,6 +82,15 @@ int main() {
     buttonText2.setCharacterSize(12);
     buttonText2.setString("Exit");
     button2.setFillColor(sf::Color{50,50,50});
+
+    button3.setSize(sf::Vector2f(98.f, 23.f));
+    button3.setOutlineColor(sf::Color(30,30,30));
+    button3.setOutlineThickness(2.f);
+    button3.setPosition(20,40);
+    buttonText3.setFont(font);
+    buttonText3.setCharacterSize(12);
+    buttonText3.setString("Exit");
+    button3.setFillColor(sf::Color{50,50,50});
     
     // Terrible centering code
 
