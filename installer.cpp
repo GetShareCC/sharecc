@@ -219,6 +219,8 @@ int main() {
         window.draw(buttonText);
         window.draw(button2);
         window.draw(buttonText2);
+        window.draw(button3);
+        window.draw(buttonText3);
         window.draw(started);
         window.draw(mouse);
         window.display();
