@@ -208,8 +208,6 @@ int main() {
             mousetex.loadFromFile("cursors/left_ptr.png");
         }
 
-        // Opening Animation
-
 
         // Set dynamic positions and draw entities
         window.clear(sf::Color{ 38, 38, 38, 38 });  
