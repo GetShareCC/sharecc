@@ -7,6 +7,7 @@ int pigdig = 100;
 
 int main() {
     bool clicked = true; // i don't know why this works, it makes no sense. but it does work
+    int brightness = 0;
 
     // create entities
     sf::RenderWindow window(sf::VideoMode(400, 400), "ShareCC - Installer", sf::Style::Close);
@@ -49,17 +50,14 @@ int main() {
     credits.setCharacterSize(12);
     credits.setFont(font);
     credits.setFillColor(sf::Color(252, 159, 0));
-    credits.setPosition(4.f, 383.f);
 
     license.setCharacterSize(12);
     license.setFont(font);
     license.setFillColor(sf::Color(252, 159, 0));
-    license.setPosition(4.f, 383.f);
 
-    started.setCharacterSize(12);
+    started.setCharacterSize(18);
     started.setFont(font);
     started.setFillColor(sf::Color(252, 159, 0));
-    started.setPosition(4.f,  383.f);
 
     text.setCharacterSize(22);
     text.setFont(font);
@@ -95,6 +93,11 @@ int main() {
     textpos = (intermediate / 2);
     credits.setPosition(textpos, 380);
 
+    width = started.getLocalBounds().width;
+    intermediate = (400 - width);
+    textpos = (intermediate / 2);
+    started.setPosition(textpos, 40);
+
     width = license.getLocalBounds().width;
     intermediate = (400 - width);
     textpos = (intermediate / 2);
@@ -109,7 +112,7 @@ int main() {
     width = button2.getLocalBounds().width;
     intermediate = (400 - width);
     textpos = (intermediate / 2);
-    button2.setPosition(textpos, 180);
+    button2.setPosition(textpos, 207);
     buttonText2.setPosition(button.getPosition());
 
     width = button.getLocalBounds().width;
@@ -120,7 +123,7 @@ int main() {
     width = button2.getLocalBounds().width;
     intermediate = (98 - width);
     bttntextpos = (intermediate / 2);
-    buttonText2.setPosition(188, 184);
+    buttonText2.setPosition(188, 211);
 
     // Main Render Loop
     while (window.isOpen())
@@ -138,6 +141,16 @@ int main() {
         // Check for inputs
 
         if(event.type == sf::Event::MouseWheelScrolled) {
+            width = text.getLocalBounds().width;
+            intermediate = (400 - width);
+            textpos = (intermediate / 2);
+            text.setPosition(textpos, 5);
+            width = started.getLocalBounds().width;
+            intermediate = (400 - width);
+            textpos = (intermediate / 2);
+            started.setPosition(textpos, 40);
+            text.setString("mouse wheel go brrrr");
+            started.setString("You moved your mouse wheel! Congrats!");
             if (event.mouseWheelScroll.delta == -1) {
                 mouse.rotate(-1);
             }
@@ -197,6 +210,7 @@ int main() {
         window.draw(buttonText);
         window.draw(button2);
         window.draw(buttonText2);
+        window.draw(started);
         window.draw(mouse);
         window.display();
     }
