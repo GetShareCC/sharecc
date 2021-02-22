@@ -1,5 +1,4 @@
-#include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
 
@@ -28,6 +27,10 @@ int main() {
     sf::RectangleShape button3;
     sf::Text buttonText3;
     sf::Text license;
+    sf::Image icon;
+
+    icon.loadFromFile("icon.png");
+    // window.setIcon(icon);
 
     text.setString("Welcome To ShareCC!");
     license.setString("By installing, you agree to the MIT License at https://mit-license.org/");
@@ -86,10 +89,10 @@ int main() {
     button3.setSize(sf::Vector2f(98.f, 23.f));
     button3.setOutlineColor(sf::Color(30,30,30));
     button3.setOutlineThickness(2.f);
-    button3.setPosition(20,40);
+    button3.setPosition(0,0);
     buttonText3.setFont(font);
     buttonText3.setCharacterSize(12);
-    buttonText3.setString("Exit");
+    buttonText3.setString("Install Location");
     button3.setFillColor(sf::Color{50,50,50});
     
     // Terrible centering code
@@ -123,8 +126,14 @@ int main() {
     width = button2.getLocalBounds().width;
     intermediate = (400 - width);
     textpos = (intermediate / 2);
-    button2.setPosition(textpos, 207);
+    button2.setPosition(textpos, 107);
     buttonText2.setPosition(button.getPosition());
+
+    width = button3.getLocalBounds().width;
+    intermediate = (400 - width);
+    textpos = (intermediate / 2);
+    button3.setPosition(textpos, 186);
+    buttonText3.setPosition(button.getPosition());
 
     width = button.getLocalBounds().width;
     intermediate = (98 - width);
@@ -135,6 +144,11 @@ int main() {
     intermediate = (98 - width);
     bttntextpos = (intermediate / 2);
     buttonText2.setPosition(188, 211);
+
+    width = button3.getLocalBounds().width;
+    intermediate = (98 - width);
+    bttntextpos = (intermediate / 2);
+    buttonText3.setPosition(188, 211);
 
     // Main Render Loop
     while (window.isOpen())
@@ -173,10 +187,10 @@ int main() {
 
 
         // Button click detection! My code is so bad, honestly if you are reading this, just beware
-        if (button.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
             button.setOutlineColor(sf::Color(252, 159, 0));
             mousetex.loadFromFile("cursors/pointing_hand.png");
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if (button.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
                 if (clicked = true) {
                     FILE *f = popen("zenity --error --title='ShareCC - Error' --text='You need to specify an install location.'", "r");
                     clicked = false;
