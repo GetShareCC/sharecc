@@ -205,6 +205,25 @@ int main() {
             mousetex.loadFromFile("cursors/left_ptr.png");
         }
 
+        // Button click detection! My code is so bad, honestly if you are reading this, just beware
+        if (button.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+            button.setOutlineColor(sf::Color(252, 159, 0));
+            mousetex.loadFromFile("cursors/pointing_hand.png");
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                if (clicked = true) {
+                    FILE *f = popen("zenity --error --title='ShareCC - Error' --text='You need to specify an install location.'", "r");
+                    clicked = false;
+                }
+            }
+            else {
+                clicked = true;
+            }
+        }
+        else {
+            button.setOutlineColor(sf::Color(30,30,30));
+            mousetex.loadFromFile("cursors/left_ptr.png");
+        }
+
         if (button2.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
             button2.setOutlineColor(sf::Color(252, 159, 0));
             mousetex.loadFromFile("cursors/pointing_hand.png");
@@ -219,6 +238,23 @@ int main() {
         }
         else {
             button2.setOutlineColor(sf::Color(30,30,30));
+            mousetex.loadFromFile("cursors/left_ptr.png");
+        }
+
+        if (button3.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+            button3.setOutlineColor(sf::Color(252, 159, 0));
+            mousetex.loadFromFile("cursors/pointing_hand.png");
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                if (clicked = true) {
+                    return 0;
+                }
+            }
+            else {
+                clicked = true;
+            }
+        }
+        else {
+            button3.setOutlineColor(sf::Color(30,30,30));
             mousetex.loadFromFile("cursors/left_ptr.png");
         }
 
