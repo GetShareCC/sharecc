@@ -28,6 +28,7 @@ int main() {
     sf::Text buttonText3;
     sf::Text license;
     sf::Image icon;
+    sf::Text location;
 
     icon.loadFromFile("icon.png");
     // window.setIcon(icon);
@@ -246,7 +247,8 @@ int main() {
             mousetex.loadFromFile("cursors/pointing_hand.png");
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if (clicked = true) {
-                    return 0;
+                    FILE *f = popen("zenity --file-selection --title='Choose an install directory'", "r");
+
                 }
             }
             else {
