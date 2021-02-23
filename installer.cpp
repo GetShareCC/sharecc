@@ -86,7 +86,7 @@ int main() {
     buttonText2.setString("Exit");
     button2.setFillColor(sf::Color{50,50,50});
 
-    button3.setSize(sf::Vector2f(98.f, 23.f));
+    button3.setSize(sf::Vector2f(98.f, 24.f));
     button3.setOutlineColor(sf::Color(30,30,30));
     button3.setOutlineThickness(2.f);
     button3.setPosition(0,0);
@@ -126,13 +126,13 @@ int main() {
     width = button2.getLocalBounds().width;
     intermediate = (400 - width);
     textpos = (intermediate / 2);
-    button2.setPosition(textpos, 107);
+    button2.setPosition(textpos, 207);
     buttonText2.setPosition(button.getPosition());
 
     width = button3.getLocalBounds().width;
     intermediate = (400 - width);
     textpos = (intermediate / 2);
-    button3.setPosition(textpos, 186);
+    button3.setPosition(textpos, 178);
     buttonText3.setPosition(button.getPosition());
 
     width = button.getLocalBounds().width;
@@ -148,7 +148,7 @@ int main() {
     width = button3.getLocalBounds().width;
     intermediate = (98 - width);
     bttntextpos = (intermediate / 2);
-    buttonText3.setPosition(188, 211);
+    buttonText3.setPosition(160, 182);
 
     // Main Render Loop
     while (window.isOpen())
@@ -187,10 +187,10 @@ int main() {
 
 
         // Button click detection! My code is so bad, honestly if you are reading this, just beware
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (button.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
             button.setOutlineColor(sf::Color(252, 159, 0));
             mousetex.loadFromFile("cursors/pointing_hand.png");
-            if (button.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if (clicked = true) {
                     FILE *f = popen("zenity --error --title='ShareCC - Error' --text='You need to specify an install location.'", "r");
                     clicked = false;
